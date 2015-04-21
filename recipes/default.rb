@@ -70,7 +70,7 @@ end
 template "#{node[:monit][:conf_dir]}/nginx.conf" do
     cookbook 'nginx'
     mode '0600'
-    source "monit.erb"
+    source "monit.conf.erb"
     notifies :restart, "service[monit]"
 end
 
