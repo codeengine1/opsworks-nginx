@@ -71,7 +71,6 @@ template "#{node[:monit][:conf_dir]}/nginx.monitrc" do
     cookbook 'nginx'
     mode '0600'
     source "monitrc.erb"
-    notifies :restart, "service[monit]"
 end
 
 include_recipe "nginx::service"
