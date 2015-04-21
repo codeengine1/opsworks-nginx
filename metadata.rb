@@ -4,6 +4,8 @@ maintainer  "David Maple"
 license     "Apache 2.0"
 version     "1.0.0"
 
+depends 'opsworks_initial_setup'
+
 attribute "nginx/dir",
   :display_name => "Nginx Directory",
   :description => "Location of nginx configuration files",
