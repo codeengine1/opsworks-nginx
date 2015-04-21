@@ -67,10 +67,10 @@ template "#{node[:nginx][:dir]}/ssl/ssl.key" do
     notifies :restart, "service[nginx]"
 end
 
-template "#{node[:monit][:conf_dir]}/nginx.conf" do
+template "#{node[:monit][:conf_dir]}/nginx.monitrc" do
     cookbook 'nginx'
     mode '0600'
-    source "monit.conf.erb"
+    source "monitrc.erb"
     notifies :restart, "service[monit]"
 end
 
