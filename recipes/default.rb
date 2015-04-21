@@ -67,6 +67,8 @@ template "#{node[:nginx][:dir]}/ssl/ssl.key" do
     notifies :restart, "service[nginx]"
 end
 
+include_recipe "monit::service"
+
 template "#{node[:monit][:conf_dir]}/nginx.monitrc" do
     cookbook 'nginx'
     mode '0600'
