@@ -38,6 +38,26 @@ server {
 		proxy_pass         http://127.0.0.1:9000/health-check;
 	}
 
+    location /health-check/pass {
+        add_header Cache-Control "no-store, must-revalidate";
+        add_header Pragma no-cache;
+        expires epoch;
+        proxy_pass         http://127.0.0.1:9000/health-check;
+
+        allow   127.0.0.1;
+        deny    all;
+    }
+
+    location /health-check/fail {
+        add_header Cache-Control "no-store, must-revalidate";
+        add_header Pragma no-cache;
+        expires epoch;
+        proxy_pass         http://127.0.0.1:9000/health-check;
+
+        allow   127.0.0.1;
+        deny    all;
+    }
+
     location / {
         add_header Cache-Control "no-store, must-revalidate";
         add_header Pragma no-cache;
@@ -81,6 +101,26 @@ server {
 		expires epoch;
 		proxy_pass         http://127.0.0.1:9000/health-check;
 	}
+
+        location /health-check/pass {
+        add_header Cache-Control "no-store, must-revalidate";
+        add_header Pragma no-cache;
+        expires epoch;
+        proxy_pass         http://127.0.0.1:9000/health-check;
+
+        allow   127.0.0.1;
+        deny    all;
+    }
+
+    location /health-check/fail {
+        add_header Cache-Control "no-store, must-revalidate";
+        add_header Pragma no-cache;
+        expires epoch;
+        proxy_pass         http://127.0.0.1:9000/health-check;
+
+        allow   127.0.0.1;
+        deny    all;
+    }
 
     location / {
         add_header Cache-Control "no-store, must-revalidate";
