@@ -1,6 +1,7 @@
 package "nginx"
 
 include_recipe "opsworks-ntp"
+include_recipe "opwsorks-cloudwatch-logs"
 
 service 'monit' do
   action :nothing
