@@ -23,6 +23,7 @@ server {
 
     #set the default location
     location /assets/ {
+        proxy_set_header Accept-Encoding $accept_gzip;
         proxy_cache assets;
         proxy_cache_valid 200 180m;
         expires max;
@@ -87,6 +88,7 @@ server {
 
     #set the default location
     location /assets/ {
+        proxy_set_header Accept-Encoding $accept_gzip;
         proxy_cache assets;
         proxy_cache_valid 200 180m;
         expires max;
