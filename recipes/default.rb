@@ -1,5 +1,9 @@
 package "nginx"
 
+service 'monit' do
+  action :nothing
+end
+
 directory node[:nginx][:dir] do
   owner 'root'
   group 'root'
