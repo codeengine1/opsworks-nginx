@@ -6,7 +6,6 @@ if ($http_accept_encoding ~* gzip) {
 }
 
 proxy_cache_path /data/nginx/cache keys_zone=assets:10m max_size=2000m;
-proxy_cache_key "$request_uri $accept_gzip";
 
 log_format playframework '$remote_addr "$cookie_browserVisitorId" $time_iso8601 "$request" $status $request_length $body_bytes_sent "$http_referer" "$http_user_agent" $body_bytes_sent $msec $request_time';
 
@@ -25,6 +24,7 @@ server {
     location /assets/ {
         proxy_set_header Accept-Encoding $accept_gzip;
         proxy_cache assets;
+        proxy_cache_key "$request_uri $accept_gzip";
         proxy_cache_valid 200 180m;
         expires max;
         add_header Cache-Control public;
@@ -90,6 +90,7 @@ server {
     location /assets/ {
         proxy_set_header Accept-Encoding $accept_gzip;
         proxy_cache assets;
+        proxy_cache_key "$request_uri $accept_gzip";
         proxy_cache_valid 200 180m;
         expires max;
         add_header Cache-Control public;
