@@ -29,8 +29,8 @@ server {
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade"; 
     }
-    
-	location /health-check {
+
+    location /health-check {
 		access_log off;
 		add_header Cache-Control "no-store, must-revalidate";
 		add_header Pragma no-cache;
@@ -51,20 +51,11 @@ server {
     location /health-check/fail {
         allow 127.0.0.1;
         deny all;
+
         add_header Cache-Control "no-store, must-revalidate";
         add_header Pragma no-cache;
         expires epoch;
         proxy_pass         http://127.0.0.1:9000/health-check/fail;
-    }
-
-    location /health-check/fail {
-        add_header Cache-Control "no-store, must-revalidate";
-        add_header Pragma no-cache;
-        expires epoch;
-        proxy_pass         http://127.0.0.1:9000/health-check;
-
-        allow   127.0.0.1;
-        deny    all;
     }
 
     location / {
@@ -102,7 +93,7 @@ server {
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade"; 
     }
-    
+
     location /health-check {
 		access_log off;
 		add_header Cache-Control "no-store, must-revalidate";
@@ -124,7 +115,7 @@ server {
     location /health-check/fail {
         allow 127.0.0.1;
         deny all;
-        
+
         add_header Cache-Control "no-store, must-revalidate";
         add_header Pragma no-cache;
         expires epoch;
