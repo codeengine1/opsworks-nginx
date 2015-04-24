@@ -96,13 +96,6 @@ server {
 
     #set the default location
     location /assets/ {
-        #normalize all accept-encoding headers to just gzip
-        set $accept_gzip "";
-
-        if ($http_accept_encoding ~* gzip) {
-            set $accept_gzip "gzip";
-        }
-
         proxy_set_header Accept-Encoding $accept_gzip;
         proxy_cache assets;
         proxy_cache_key "$request_uri $accept_gzip";
