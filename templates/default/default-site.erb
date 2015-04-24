@@ -1,4 +1,12 @@
+#normalize all accept-encoding headers to just gzip
+set $accept_gzip "";
+
+if ($http_accept_encoding ~* gzip) {
+    set $accept_gzip "gzip";
+}
+
 proxy_cache_path /data/nginx/cache keys_zone=assets:10m max_size=2000m;
+proxy_cache_key "$request_uri $accept_gzip";
 
 log_format playframework '$remote_addr "$cookie_browserVisitorId" $time_iso8601 "$request" $status $request_length $body_bytes_sent "$http_referer" "$http_user_agent" $body_bytes_sent $msec $request_time';
 
