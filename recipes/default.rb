@@ -37,6 +37,7 @@ template "nginx.conf" do
   owner "root"
   group "root"
   mode 0644
+  notifies :restart, "service[nginx]"
 end
 
 template "#{node[:nginx][:dir]}/sites-available/default" do
@@ -44,6 +45,7 @@ template "#{node[:nginx][:dir]}/sites-available/default" do
   owner "root"
   group "root"
   mode 0644
+  notifies :restart, "service[nginx]"
 end
 
 template "#{node[:nginx][:dir]}/inc/proxy.conf" do
@@ -51,6 +53,7 @@ template "#{node[:nginx][:dir]}/inc/proxy.conf" do
   owner "root"
   group "root"
   mode 0644
+  notifies :restart, "service[nginx]"
 end
 
 template "#{node[:nginx][:dir]}/ssl/ssl.crt" do
