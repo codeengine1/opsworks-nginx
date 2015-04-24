@@ -1,6 +1,6 @@
 package "nginx"
 
-include_recipe "ntp"
+include_recipe "opsworks-ntp"
 
 service 'monit' do
   action :nothing
