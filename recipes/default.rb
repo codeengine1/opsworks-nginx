@@ -1,5 +1,7 @@
 package "nginx"
 
+include_recipe "ntp"
+
 service 'monit' do
   action :nothing
 end

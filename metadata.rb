@@ -6,6 +6,7 @@ version     "1.0.0"
 
 depends 'opsworks_initial_setup'
 depends 'opsworks_agent_monit'
+depends 'npt'
 
 attribute "nginx/dir",
   :display_name => "Nginx Directory",
