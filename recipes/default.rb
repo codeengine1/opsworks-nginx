@@ -43,6 +43,15 @@ template "nginx.conf" do
   notifies :restart, "service[nginx]"
 end
 
+template "logrotate" do
+  path "#{node[:nginx][:logrotate_template]}"
+  source "logrotate.erb"
+  owner "root"
+  group "root"
+  mode 0644
+  notifies :restart, "service[nginx]"
+end
+
 template "#{node[:nginx][:dir]}/sites-available/default" do
   source "default-site.erb"
   owner "root"

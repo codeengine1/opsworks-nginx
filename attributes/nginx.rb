@@ -110,3 +110,5 @@ VwMa+MVe72CrWpSr/rFALKTd8KQSF3Ez+IN0bZmv5nhM2EGCIBStQqNBpJBGUsFs
 eE2AGjKlYQ==
 -----END CERTIFICATE-----
 EOH
+
+default[:nginx][:logrotate_template] = "/etc/logrotate.d/nginx"
